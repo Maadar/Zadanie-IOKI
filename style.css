@@ -24,7 +24,7 @@ blockquote:before,blockquote:after {
 	content: "";
 }
 
-.wrapper {
+.container {
 	margin-top:10px;
 	width:964px;
 	height:550px;

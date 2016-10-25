@@ -1,6 +1,6 @@
 (function() {
 
-	var app = angular.module("main", []);
+var app = angular.module("main", []);
     app.controller('ctrl', ['$scope', '$http', '$log', function($scope, $http, $log) {
         $http.get('list.json')
             .success(function(model) {
@@ -12,11 +12,11 @@
                 $log.error('Unexpected error number:' +status+'');
 
             });
-
         $scope.answer = [];
         $scope.checkAnswers = true;   
         $scope.refreshAnswers = false;
-        $scope.inputBlock = false;     
+        $scope.disableInput = false;
+        $scope.inputBlock = "";  
         $scope.isOptionVisible = Array().fill(false);
 		$scope.isOptionInvisible = Array().fill(false);
 
@@ -24,21 +24,21 @@
         $scope.check = function() {
             $scope.words.options.forEach(function(option, index) {
                 console.log(option.answer);
-                console.log($scope.answer);
-                console.log($scope.answer[index]);
+                $scope.inputBlock = option.answer; 
                 compare(option.answer, $scope.answer[index], index);
             });
+            $scope.disableInput = true;
             $scope.checkAnswers = false;
             $scope.refreshAnswers = true;
-            $scope.inputBlock = true;  
         };
         //activities for refresh button
         $scope.refresh = function() {
             $scope.isOptionVisible = Array().fill(false);
             $scope.isOptionInvisible = Array().fill(false);
+            $scope.inputBlock = "";
             $scope.checkAnswers = true;   
             $scope.refreshAnswers = false;
-            $scope.inputBlock = false;
+            $scope.disableInput = false;
         };
 
         var compare = function(answer, response, x) {
