@@ -15,16 +15,14 @@ var app = angular.module("main", []);
         $scope.answer = [];
         $scope.checkAnswers = true;   
         $scope.refreshAnswers = false;
-        $scope.disableInput = false;
-        $scope.inputBlock = "";  
+        $scope.inputBlock = [];  
         $scope.isOptionVisible = Array().fill(false);
 		$scope.isOptionInvisible = Array().fill(false);
 
         //function is running for every option in json, forEach loop take as parameters option and index and using option.answer it takes value from answer and index, use compare function, which compare value from input with value in json file and return true or false for images.
         $scope.check = function() {
             $scope.words.options.forEach(function(option, index) {
-                console.log(option.answer);
-                $scope.inputBlock = option.answer; 
+                $scope.inputBlock[index] = option.answer;
                 compare(option.answer, $scope.answer[index], index);
             });
             $scope.disableInput = true;
@@ -35,7 +33,7 @@ var app = angular.module("main", []);
         $scope.refresh = function() {
             $scope.isOptionVisible = Array().fill(false);
             $scope.isOptionInvisible = Array().fill(false);
-            $scope.inputBlock = "";
+            $scope.inputBlock = [];
             $scope.checkAnswers = true;   
             $scope.refreshAnswers = false;
             $scope.disableInput = false;
@@ -45,7 +43,7 @@ var app = angular.module("main", []);
             if (answer === response) {
                 $scope.isOptionVisible[x] = true;
             } else {
-                $scope.isOptionInvisible[x] = true;
+                $scope.isOptionInvisible[x] = true; 
             }
         };
 	}]);
