@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Mockup</title>
+		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+	</head>
+	<body ng-app="main">					
+		<div class="wrapper"  ng-controller="ctrl">
+			<div class="row">
+				<div class="col-md-12 heading">
+					<h1>{{words.name}}</h1>
+					<h3>{{words.question}}</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<img src="img/1.png">
+					<div class="formExampleContainer">
+						<p>Example:</p>
+						<p class="numberExampleInput">1</p>
+						<input class="exampleFormStyles" type="text" ng-model="answer[0]" ng-value='words.options[0].answer' ng-disabled="inputBlock">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<img src="img/2.png">
+					<div class="formContainer">
+						<p class="number">2</p>
+						<input class="formStyles" type="text" ng-model="answer[1]" ng-disabled="inputBlock">
+						<img src="img/correct.png" alt="correct" ng-show="isOptionVisible[1]">
+						<img src="img/incorrect.png" alt="incorrect" ng-show="isOptionInvisible[1]">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<img src="img/3.png">
+					<div class="formContainer">
+						<p class="number">3</p>
+						<input class="formStyles" type="text" ng-model="answer[2]" ng-disabled="inputBlock">
+						<img src="img/correct.png" alt="correct" ng-show="isOptionVisible[2]">
+						<img src="img/incorrect.png" alt="incorrect" ng-show="isOptionInvisible[2]">
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-4">
+					<img src="img/4.png">
+					<div class="formContainer">
+						<p class="number">4</p>
+						<input class="formStyles" type="text" ng-model="answer[3]" ng-disabled="inputBlock">
+						<img src="img/correct.png" alt="correct" ng-show="isOptionVisible[3]">
+						<img src="img/incorrect.png" alt="incorrect" ng-show="isOptionInvisible[3]">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<img src="img/5.png">
+					<div class="formContainer">
+						<p class="number">5</p>
+						<input class="formStyles" type="text" ng-model="answer[4]" ng-disabled="inputBlock">
+						<img src="img/correct.png" alt="correct" ng-show="isOptionVisible[4]">
+						<img src="img/incorrect.png" alt="incorrect" ng-show="isOptionInvisible[4]">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<img src="img/6.png">
+					<div class="formContainer">
+						<p class="number">6</p>
+						<input class="formStyles" type="text" ng-model="answer[5]" ng-disabled="inputBlock">
+						<img src="img/correct.png" alt="correct" ng-show="isOptionVisible[5]">
+						<img src="img/incorrect.png" alt="incorrect" ng-show="isOptionInvisible[5]">
+					</div>
+				</div>
+			</div>
+			<div class="row alert">
+				<div class="col-md-10">
+					<div class="hintsContainer" role="alert">
+						<p class="hint" ng-repeat="hint in words.options">
+							<span>{{ hint.answer}}</span>
+						</p>
+					</div>
+				</div>
+				<div class="col-md-2">
+					<button type="button" class="btn btn-info btn-circle btn-lg" ng-click="check()" ng-show="checkAnswers">
+						<i class="glyphicon glyphicon-ok"></i>
+					</button>
+					<button type="button" class="btn btn-info btn-circle btn-lg" ng-click="refresh()" ng-show="refreshAnswers">
+						<i class="glyphicon glyphicon-refresh"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+		<script src="node_modules/angular/angular.min.js"></script>
+		<script src="node_modules/angular-route/angular-route.min.js"></script>
+		<script src="app.js"></script>
+		<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	</body>
+</html>
