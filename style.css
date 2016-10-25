@@ -44,17 +44,21 @@ blockquote:before,blockquote:after {
 	font-weight:900;	
 }
 
-.number {
+.boxPosition {
 	float:left;
-	font-weight:900;
-	padding-right:10px;
-	margin-top:25px;
+	padding-left:100px;
 }
 
-.numberExampleInput {
+.formContainer {
+	width:170px;
+}
+
+.numberOfBox {
 	float:left;
+	display:inline;
 	font-weight:900;
-	padding-right:10px;
+	margin-left:10px;
+	margin-top:10px;
 }
 
 .alert {
@@ -70,12 +74,13 @@ blockquote:before,blockquote:after {
 	color:#000000;
 }
 .hintsContainer {
+	margin-top:40px;
+	margin-left:80px;
 	background:#E6EAEE;
 	height:30px;
 	line-height: 30px;
 	width:660px;
 	border: 1px solid #D5DADD;
-	margin-top:20px;
 }
 
 .btn-circle.btn-lg {
@@ -85,20 +90,12 @@ blockquote:before,blockquote:after {
 	font-size: 18px;
 	line-height: 1.33;
 	border-radius: 25px;
-}
-
-.formExampleContainer {
-	background:#E6EAEE;
-	width:200px;
-	height:65px;
-	border:1px solid #C7D6DF;
-	margin-left:10px;
+	margin-top:30px;
 }
 
 .formStyles {
 	text-transform: lowercase;
 	width: 70px;
-	margin-top:25px;
 	height: 20px;
 	font-size:11px;
 	border-radius:2px;
@@ -106,16 +103,8 @@ blockquote:before,blockquote:after {
 	box-shadow:inset 0 0 1px 1px #CACACA;
 	outline:none;
 	padding:10px 5px;
+	margin-top:10px;
+	margin-left:50px;
 }
 
-.exampleFormStyles {
-	width:70px;
-	text-transform: lowercase;	
-	height: 20px;
-	font-size:11px;
-	border-radius:2px;
-	border:1px solid #CACACA;
-	box-shadow:inset 0 0 1px 1px #CACACA;
-	outline:none;
-	padding:10px 5px;
-}
+

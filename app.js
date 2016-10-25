@@ -3,18 +3,17 @@
 	var app = angular.module("main", []);
     app.controller('ctrl', ['$scope', '$http', '$log', function($scope, $http, $log) {
         $http.get('list.json')
-            .success(function(model, id) {
+            .success(function(model) {
 
                 $scope.words = model;
-                console.log($scope.words);
-
             })
             .error(function(model, status){
 
                 $log.error('Unexpected error number:' +status+'');
 
             });
-        $scope.answers = {};
+
+        $scope.answer = [];
         $scope.checkAnswers = true;   
         $scope.refreshAnswers = false;
         $scope.inputBlock = false;     
@@ -24,6 +23,9 @@
         //function is running for every option in json, forEach loop take as parameters option and index and using option.answer it takes value from answer and index, use compare function, which compare value from input with value in json file and return true or false for images.
         $scope.check = function() {
             $scope.words.options.forEach(function(option, index) {
+                console.log(option.answer);
+                console.log($scope.answer);
+                console.log($scope.answer[index]);
                 compare(option.answer, $scope.answer[index], index);
             });
             $scope.checkAnswers = false;
@@ -32,8 +34,8 @@
         };
         //activities for refresh button
         $scope.refresh = function() {
-            $scope.isOptionVisible = Array(7).fill(false);
-            $scope.isOptionInvisible = Array(7).fill(false);
+            $scope.isOptionVisible = Array().fill(false);
+            $scope.isOptionInvisible = Array().fill(false);
             $scope.checkAnswers = true;   
             $scope.refreshAnswers = false;
             $scope.inputBlock = false;
