@@ -18,8 +18,8 @@
         $scope.checkAnswers = true;   
         $scope.refreshAnswers = false;
         $scope.inputBlock = false;     
-        $scope.isOptionVisible = Array(7).fill(false);
-		$scope.isOptionInvisible = Array(7).fill(false);
+        $scope.isOptionVisible = Array().fill(false);
+		$scope.isOptionInvisible = Array().fill(false);
 
         //function is running for every option in json, forEach loop take as parameters option and index and using option.answer it takes value from answer and index, use compare function, which compare value from input with value in json file and return true or false for images.
         $scope.check = function() {
