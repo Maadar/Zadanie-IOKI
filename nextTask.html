@@ -1,0 +1,44 @@
+
+<!-- ng view-->
+<div class="container containerBox" ng-controller="mainController">
+			<div class="row">
+				<div class="col-md-12 heading">
+					<h1>{{ words.name }}</h1>
+					<h3>{{ words.question }}</h3>
+				</div>
+			</div>
+			<!-- NG REPEAT -->
+    		<div class="row boxPosition">
+				<div class="col-md-4" ng-repeat="box in words.options track by $index">
+					<!-- get source from json to img -->
+					<img ng-src="img/{{words.imgPath}}/{{box.img}}">
+					<div class="formContainer"> 
+						<span class="numberOfBox">{{ $index+1 }}</span>
+						<input class="formStyles" type="text" ng-model="answer[$index]" ng-disabled="disableInput" ng-value="inputBlock[$index]">
+						<!-- display "correct" or "incorrect" symbol -->
+						<img src="img/correct.png" alt="correct" ng-show="isOptionVisible[$index]">
+                		<img src="img/incorrect.png" alt="incorrect" ng-show="isOptionInvisible[$index]">
+					</div>
+				</div>
+			</div>
+			<!-- display hint -->
+			<div class="row">
+				<div class="col-md-9">
+					<div class="hintsContainer center-block" role="alert">
+						<div class="col-md-2" ng-repeat="hint in words.options">
+							<p class="hint">
+								<span>{{ hint.answer }}</span>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-2">
+					<button type="button" class="btn btn-info btn-circle btn-lg" ng-click="check()" ng-show="checkAnswers">
+						<i class="glyphicon glyphicon-ok"></i>
+					</button>
+					<button type="button" class="btn btn-info btn-circle btn-lg" ng-click="refresh()" ng-show="refreshAnswers">
+						<i class="glyphicon glyphicon-refresh"></i>
+					</button>
+				</div>
+			</div>
+		</div>

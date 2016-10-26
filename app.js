@@ -1,17 +1,30 @@
 (function() {
 
-var app = angular.module("main", []);
-    app.controller('ctrl', ['$scope', '$http', '$log', function($scope, $http, $log) {
-        $http.get('list.json')
-            .success(function(model) {
+var app = angular.module("mainModule", ['ngRoute']);
 
+    //routing section
+    app.config(['$routeProvider', function($routeProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: 'nextTask.html' 
+            })
+            .when('/nextTask', {
+                templateUrl: 'previoousTask.html' 
+            });  
+    }])
+    
+    app.controller('mainController', ['$scope', '$http', '$log', function($scope, $http, $log) {
+        $http.get('list1.json')
+            .success(function(model) {
+                //get data from json file 
                 $scope.words = model;
             })
             .error(function(model, status){
-
+                //if something goes wrong, show error log
                 $log.error('Unexpected error number:' +status+'');
 
             });
+        //set values to variables
         $scope.answer = [];
         $scope.checkAnswers = true;   
         $scope.refreshAnswers = false;
@@ -19,7 +32,7 @@ var app = angular.module("main", []);
         $scope.isOptionVisible = Array().fill(false);
 		$scope.isOptionInvisible = Array().fill(false);
 
-        //function is running for every option in json, forEach loop take as parameters option and index and using option.answer it takes value from answer and index, use compare function, which compare value from input with value in json file and return true or false for images.
+        //check button
         $scope.check = function() {
             $scope.words.options.forEach(function(option, index) {
                 $scope.inputBlock[index] = option.answer;
@@ -38,7 +51,7 @@ var app = angular.module("main", []);
             $scope.refreshAnswers = false;
             $scope.disableInput = false;
         };
-
+        //conpare value from input and json file
         var compare = function(answer, response, x) {
             if (answer === response) {
                 $scope.isOptionVisible[x] = true;
